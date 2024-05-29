@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Gestionador de Contraseñas</string>
+    <string name="tituloApp">LastPass</string>
+    <string name="presentacionApp">Bienvenido al mejor gestionador de contraseñas</string>
+    <string name="entrar">Entrar</string>
+    <string name="title_activity_login">Login</string>
+    <string name="username">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="pantalla_principal">Pantalla Principal</string>
+    <string name="bienvenido">¡Bienvenido!</string>
+    <string name="mensajeError">Credenciales incorrectas</string>
+</resources>
