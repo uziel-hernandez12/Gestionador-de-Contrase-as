@@ -27,7 +27,8 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -73,6 +74,13 @@ import com.example.gestionadordecontraseas.ui.theme.ui.theme.GestionadorDeContra
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import android.content.Context
+import android.content.Intent
+import android.content.res.Configuration
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
+import java.util.Locale
 
 class ComponentViewModel : ViewModel() {
     // MutableStateFlow para almacenar y emitir una lista mutable de Componente
@@ -250,20 +258,57 @@ fun LoginScreen(navController: androidx.navigation.NavHostController) {
     var passwordVisible by remember { mutableStateOf(false) }
     var showErrorMessage by remember { mutableStateOf(false) }
 
+    var expanded by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
     // Scaffold que proporciona la estructura básica de la pantalla
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text ="") },
+                title = { Text(text = "") },
                 actions = {
-                    IconButton(onClick = {  }) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.baseline_settings_24), // Reemplaza con el id de tu icono de engrane
-                            contentDescription = stringResource(id = R.string.configuracion)
-                        )
-                    }
+                    Box {
+                        IconButton(onClick = { expanded = true }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_settings_24), // Reemplaza con el id de tu icono de engrane
+                                contentDescription = stringResource(id = R.string.configuracion)
+                            )
+                        }
+                        DropdownMenu(
+                            expanded = expanded,
+                            onDismissRequest = { expanded = false }
+                        ) {
+                            DropdownMenu(
+                                expanded = expanded,
+                                onDismissRequest = { expanded = false }
+                            ) {
+                                DropdownMenuItem(onClick = {
+                                    setLocale(context, "es")
+                                    expanded = false
+                                }, text = { Text("Español") },
+                                    leadingIcon = {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.espa_ol_mexico24),
+                                            contentDescription = null,
+                                            modifier = Modifier.size(24.dp)
 
+                                        )
+                                    })
+                                DropdownMenuItem(onClick = {
+                                    setLocale(context, "en")
+                                    expanded = false
+                                }, text = { Text("English") },
+                                    leadingIcon = {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.ingles_eu24),
+                                            contentDescription = null,
+                                            modifier = Modifier.size(24.dp)
+                                        )
+                                    })
+                            }
+                        }
+
+                    }
                 }
             )
         }
@@ -364,6 +409,20 @@ fun LoginScreen(navController: androidx.navigation.NavHostController) {
 }
 
 
+fun setLocale(context: Context, languageCode: String) {
+    val locale = Locale(languageCode)
+    Locale.setDefault(locale)
+    val config = Configuration()
+    config.setLocale(locale)
+    context.resources.updateConfiguration(config, context.resources.displayMetrics)
+
+    // Reinicia la actividad para aplicar el cambio de idioma
+    val intent = context.packageManager.getLaunchIntentForPackage(context.packageName)
+    intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+    context.startActivity(intent)
+}
+
+
 /**
  * contiene el codigo para cada card de la lista
  */
@@ -395,7 +454,10 @@ fun ComponenteCard(
                 Image(
                     painter = painterResource(id = componente.imageResourceId),
                     contentDescription = componente.nombre,
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(shape = CircleShape)
+
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 // Nombre del componente
