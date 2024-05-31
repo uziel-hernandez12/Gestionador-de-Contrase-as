@@ -34,6 +34,6 @@
     <string name="actualizarContraseña">Actualizar Contraseña</string>
     <string name="cerrar">Cerrar</string>
     <string name="guardar">Guardar</string>
-
-
+    <string name="logo">logo de la app</string>
+    <string name="configuracion">configuracion</string>
 </resources>

@@ -250,23 +250,21 @@ fun LoginScreen(navController: androidx.navigation.NavHostController) {
     var passwordVisible by remember { mutableStateOf(false) }
     var showErrorMessage by remember { mutableStateOf(false) }
 
+
     // Scaffold que proporciona la estructura básica de la pantalla
     Scaffold(
         topBar = {
-            // Barra superior con el título de la aplicación
-            CenterAlignedTopAppBar(
-                title = {
-                    Text(
-                        text = stringResource(id = R.string.tituloApp),
-                        fontWeight = FontWeight.Bold
-                    )
-                },
-                colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
-                )
+            TopAppBar(
+                title = { Text(text ="") },
+                actions = {
+                    IconButton(onClick = {  }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.baseline_settings_24), // Reemplaza con el id de tu icono de engrane
+                            contentDescription = stringResource(id = R.string.configuracion)
+                        )
+                    }
+
+                }
             )
         }
     ) { innerPadding ->
@@ -275,14 +273,25 @@ fun LoginScreen(navController: androidx.navigation.NavHostController) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.TopCenter
         ) {
             // Columna para organizar los elementos verticalmente
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center,
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 1.dp, bottom = 48.dp)
+                verticalArrangement = Arrangement.Top,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 48.dp)
             ) {
+                // Imagen del logo más grande
+                Image(
+                    painter = painterResource(id = R.drawable.logo_app_removebg_preview),
+                    contentDescription = stringResource(id = R.string.logo),
+                    modifier = Modifier
+                        .size(300.dp)  // Ajusta el tamaño según sea necesario
+                        .padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 24.dp)
+                )
+
                 // Texto de bienvenida
                 Text(
                     text = stringResource(id = R.string.bienvenido),
@@ -290,6 +299,7 @@ fun LoginScreen(navController: androidx.navigation.NavHostController) {
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.padding(bottom = 24.dp)
                 )
+
                 // Campo de texto para el nombre de usuario
                 TextField(
                     value = username,
@@ -321,6 +331,7 @@ fun LoginScreen(navController: androidx.navigation.NavHostController) {
                     modifier = Modifier.fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.height(16.dp))
+
                 // Mensaje de error si las credenciales son incorrectas
                 if (showErrorMessage) {
                     Text(
@@ -330,6 +341,7 @@ fun LoginScreen(navController: androidx.navigation.NavHostController) {
                         modifier = Modifier.padding(bottom = 8.dp)
                     )
                 }
+
                 // Botón de inicio de sesión
                 Button(
                     onClick = {
