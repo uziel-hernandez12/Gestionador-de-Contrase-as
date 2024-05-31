@@ -10,4 +10,20 @@
     <string name="pantalla_principal">Pantalla Principal</string>
     <string name="bienvenido">¡Bienvenido!</string>
     <string name="mensajeError">Credenciales incorrectas</string>
+    <string name="contraseñas">Contraseñas</string>
+    <string name="search">Buscar</string>
+    <string name="home">home</string>
+    <string name="favorite">favoritos\n</string>
+    <string name="exit">Salir\n</string>
+    <string name="contraseñasGuardadas">Contraseñas guardadas</string>
+    <string name="visibility">Visibilidad</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Eliminar\n</string>
+    <string name="search_placeholder">Buscar...</string>
+    <string name="cancel">Cancelar</string>
+    <string name="copy">copiar</string>
+    <string name="contraseñasFavoritas">Contraseñas Favoritas</string>
+    <string name="contraseñasNoCoinciden">Las contraseñas no coinciden</string>
+
+
 </resources>
