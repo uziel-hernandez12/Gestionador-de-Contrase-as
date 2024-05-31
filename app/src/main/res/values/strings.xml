@@ -24,6 +24,16 @@
     <string name="copy">copiar</string>
     <string name="contraseñasFavoritas">Contraseñas Favoritas</string>
     <string name="contraseñasNoCoinciden">Las contraseñas no coinciden</string>
+    <string name="nuevaContraseña">Nueva contraseña</string>
+    <string name="confirmarContraseña">Confirmar contraseña</string>
+    <string name="esconderPassword">Esconder contraseña</string>
+    <string name="mostrarPassword">Mostrar contraseña</string>
+    <string name="añadidoFavoritos">Añadido a favoritos</string>
+    <string name="quitadoFavoritos">Quitado de favoritos</string>
+    <string name="contraseñaEliminada">Contraseña eliminada</string>
+    <string name="actualizarContraseña">Actualizar Contraseña</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="guardar">Guardar</string>
 
 
 </resources>
