@@ -49,6 +49,7 @@ fun LoginScreen(navController: androidx.navigation.NavHostController) {
     var passwordVisible by remember { mutableStateOf(false) }
     var showErrorMessage by remember { mutableStateOf(false) }
 
+    // Variable para controlar la expansión del menú desplegable
     var expanded by remember { mutableStateOf(false) }
     val context = LocalContext.current
 
@@ -59,46 +60,41 @@ fun LoginScreen(navController: androidx.navigation.NavHostController) {
                 title = { Text(text = "") },
                 actions = {
                     Box {
+                        // Botón de configuración
                         IconButton(onClick = { expanded = true }) {
                             Icon(
                                 painter = painterResource(id = R.drawable.baseline_settings_24), // Reemplaza con el id de tu icono de engrane
                                 contentDescription = stringResource(id = R.string.configuracion)
                             )
                         }
+                        // Menú desplegable para seleccionar el idioma
                         DropdownMenu(
                             expanded = expanded,
                             onDismissRequest = { expanded = false }
                         ) {
-                            DropdownMenu(
-                                expanded = expanded,
-                                onDismissRequest = { expanded = false }
-                            ) {
-                                DropdownMenuItem(onClick = {
-                                    setLocale(context, "es")
-                                    expanded = false
-                                }, text = { Text("Español") },
-                                    leadingIcon = {
-                                        Image(
-                                            painter = painterResource(id = R.drawable.espa_ol_mexico24),
-                                            contentDescription = null,
-                                            modifier = Modifier.size(24.dp)
-
-                                        )
-                                    })
-                                DropdownMenuItem(onClick = {
-                                    setLocale(context, "en")
-                                    expanded = false
-                                }, text = { Text("English") },
-                                    leadingIcon = {
-                                        Image(
-                                            painter = painterResource(id = R.drawable.ingles_eu24),
-                                            contentDescription = null,
-                                            modifier = Modifier.size(24.dp)
-                                        )
-                                    })
-                            }
+                            DropdownMenuItem(onClick = {
+                                setLocale(context, "es")
+                                expanded = false
+                            }, text = { Text("Español") },
+                                leadingIcon = {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.espa_ol_mexico24),
+                                        contentDescription = null,
+                                        modifier = Modifier.size(24.dp)
+                                    )
+                                })
+                            DropdownMenuItem(onClick = {
+                                setLocale(context, "en")
+                                expanded = false
+                            }, text = { Text("English") },
+                                leadingIcon = {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.ingles_eu24),
+                                        contentDescription = null,
+                                        modifier = Modifier.size(24.dp)
+                                    )
+                                })
                         }
-
                     }
                 }
             )
