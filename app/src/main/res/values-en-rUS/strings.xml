@@ -36,4 +36,6 @@
     <string name="guardar">Save</string>
     <string name="logo">App logo</string>
     <string name="configuracion">Settings</string>
-</resources>
+    <string name="acercaDe">About</string>
+    <string name="fotografiaMia">Photograph of the app creator</string>
+    <string name="descripcion">My name is Uziel Jonathan Hernández Llamas, currently I am studying the sixth semester of the career in Computer Technologies Engineering at the Autonomous University of Zacatecas Campus Jalpa. \n\nMy project consists of an app where I store passwords that I consider important. The app was built using Jetpack Compose, a modern UI toolkit developed by Google for building native user interfaces on Android. Jetpack Compose simplifies and speeds up Android app development by providing a declarative approach to building user interfaces.</string></resources>

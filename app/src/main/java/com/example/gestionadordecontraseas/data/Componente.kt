@@ -20,5 +20,4 @@ val componentes = listOf(
     Componente(R.drawable.tiktok_icon,"Tik Tok", "uziel1228", false),
     Componente(R.drawable.mercado_pago_icon,"Mercado Pago", "jonathan78", true),
     Componente(R.drawable.google_icon,"Google", "hernandez58", true),
-
     )

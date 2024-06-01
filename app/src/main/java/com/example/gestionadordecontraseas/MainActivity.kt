@@ -59,6 +59,7 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     }
+                    composable("acercaDe"){ AboutScreen(navController  )}
                 }
             }
         }

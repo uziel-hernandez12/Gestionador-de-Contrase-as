@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -57,14 +58,26 @@ fun BottomBar(navController: androidx.navigation.NavHostController) {
                     modifier = Modifier.size(36.dp)  // Tamaño del icono
                 )
             }
-            // Icono y acción para realizar una acción específica (salir, por ejemplo)
-            IconButton(onClick = { /* Acción del cuarto icono (Salir) */ }) {
+            IconButton(onClick = {navController.navigate("acercaDe") }) {
                 Icon(
-                    imageVector = Icons.Default.ExitToApp,  // Icono de salir
-                    contentDescription = stringResource(id = R.string.exit),  // Descripción del contenido
+                    painter = painterResource(id = R.drawable.baseline_account_circle_24),  // Icono de salir
+                    contentDescription = stringResource(id = R.string.acercaDe),  // Descripción del contenido
                     modifier = Modifier.size(36.dp)  // Tamaño del icono
                 )
             }
+            IconButton(onClick = {
+                navController.navigate("login") {
+                    popUpTo("start") { inclusive = true }
+                }
+            }) {
+                Icon(
+                    imageVector = Icons.Default.ExitToApp,
+                    contentDescription = stringResource(id = R.string.exit),
+                    modifier = Modifier.size(36.dp)
+                )
+            }
+
+
         }
     }
 }
