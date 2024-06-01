@@ -63,7 +63,7 @@ fun LoginScreen(navController: androidx.navigation.NavHostController) {
                         // Botón de configuración
                         IconButton(onClick = { expanded = true }) {
                             Icon(
-                                painter = painterResource(id = R.drawable.baseline_settings_24), // Reemplaza con el id de tu icono de engrane
+                                painter = painterResource(id = R.drawable.round_language_24), // Reemplaza con el id de tu icono de engrane
                                 contentDescription = stringResource(id = R.string.configuracion)
                             )
                         }
